@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		#wrap{
+			width: 500px;
+			height: 400px;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+		#content{
+			width: 1500px;
+			height: 100%;
+			position: relative;
+		}
+		img{
+			border: none;
+			vertical-align: top;
+		}
+		*{
+			margin: 0;
+			padding:0;
+		}
+		#content img{
+			position: absolute;
+			top:0;
+			width: 500px;
+			height: 400px;
+		}
+		#content img:nth-of-type(1){
+			left: -500px;
+		}
+		#content img:nth-of-type(2){
+			left: 0;
+		}
+		#content img:nth-of-type(3){
+			left: 500px;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="content">
+				<img src="img/0.jpg"/>
+				<img src="img/0.jpg"/>
+				<img src="img/0.jpg"/>
+			</div>
+		</div>
+		<script type="text/javascript">
+		var arr=['img/0.jpg','img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg'];
+		var num=0;
+			setInterval(function(){
+				num++;
+				num%=arr.length;
+				$('#content img:nth-of-type(3)').attr('src',arr[num])
+				$('#content').animate({'left':-500},800,function(){
+					this.style.left=0;
+					$('#content img:nth-of-type(2)').attr('src',arr[num])
+				})
+			},2000)
+				
+		</script>
+	</body>
+</html>
